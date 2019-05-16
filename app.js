@@ -14,7 +14,7 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-//使用第三方1插件
+//格式化服务器端提交的数据
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/p", require("./routes/products"));
-
+app.use("/admin001/a_t", require("./routes/admin/article_type"));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
